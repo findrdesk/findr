@@ -643,8 +643,28 @@ function copyText(text, label) {
   navigator.clipboard.writeText(text).then(() => toast(label + ' copied'));
 }
 
-function copyPayLink() {
-  navigator.clipboard.writeText(currentPayUrl).then(() => toast('Link copied'));
+async function copyPayLink() {
+  const btn = document.querySelector('.card-actions .card-btn.primary');
+  const orig = btn.textContent;
+  btn.textContent = 'SHORTENING...';
+  btn.disabled = true;
+  let urlToCopy = currentPayUrl;
+  try {
+    const res = await fetch('https://is.gd/create.php?format=json&url=' + encodeURIComponent(currentPayUrl));
+    if (res.ok) {
+      const data = await res.json();
+      if (data.shorturl) urlToCopy = data.shorturl;
+    }
+  } catch (e) { /* fall back to long URL */ }
+  try {
+    await navigator.clipboard.writeText(urlToCopy);
+    btn.textContent = 'COPIED!';
+    toast('Link copied');
+  } catch (e) {
+    btn.textContent = orig;
+  }
+  btn.disabled = false;
+  setTimeout(() => { btn.textContent = orig; }, 2000);
 }
 
 function toast(msg) {
