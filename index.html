@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< HEAD
 <link rel="icon" type="image/png" href="favicon.png">
+=======
+>>>>>>> fdd07da76513a608119a8551861c5bd602e44c26
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>findr</title>
@@ -94,6 +97,25 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;justify
   .cta-btn{width:100%;justify-content:center;}
   .cta-screen{width:100%;height:200px;}
 }
+.tools-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:24px;}
+.tool-card{position:relative;background:var(--bg);border:1px solid var(--border);padding:36px 32px 32px;transition:all .45s cubic-bezier(.25,.46,.45,.94);overflow:hidden;}
+.tool-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:0;transition:opacity .4s;}
+.tool-card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width .5s cubic-bezier(.25,.46,.45,.94);}
+.tool-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 12px 40px rgba(255,69,0,.08);}
+[data-theme="dark"] .tool-card:hover{box-shadow:0 12px 40px rgba(255,69,0,.12);}
+.tool-card:hover::before{opacity:1;}
+.tool-card:hover::after{width:100%;}
+.tool-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;}
+.tool-num{font-family:'Space Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:2px;}
+.tool-badge{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--accent);border:1px solid var(--accent);padding:4px 10px;opacity:.7;position:relative;overflow:hidden;}
+.tool-badge::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,69,0,.1),transparent);animation:badgeShimmer 3s ease-in-out infinite;}
+@keyframes badgeShimmer{0%,100%{left:-100%}50%{left:100%}}
+.tool-name{font-family:'Space Mono',monospace;font-size:clamp(18px,2.5vw,24px);font-weight:700;letter-spacing:-1px;margin-bottom:12px;line-height:1.1;}
+.tool-desc{font-size:14px;color:var(--muted);line-height:1.7;max-width:340px;}
+@media(max-width:700px){
+  .tools-grid{grid-template-columns:1fr;gap:16px;}
+  .tool-card{padding:28px 24px 24px;}
+}
 @media(max-width:400px){
   .steps{grid-template-columns:1fr;}
   .tasks-grid{grid-template-columns:1fr;}
@@ -105,6 +127,7 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;justify
   <div class="nav-logo">findr</div>
   <div class="nav-right">
     <div class="nav-social">
+      <a href="#ai-tools">AI TOOLS</a>
       <a href="https://x.com/findrdesk" target="_blank">X / TWITTER</a>
       <a href="https://t.me/findrdesk" target="_blank">TELEGRAM</a>
     </div>
@@ -182,6 +205,29 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;justify
     <div class="cta-screen">
       <canvas id="tvCanvas"></canvas>
       <div class="tv-vignette"></div>
+    </div>
+  </div>
+</div>
+<div class="section reveal" id="ai-tools">
+  <span class="section-label">AI TOOLS</span>
+  <h2>built by findr. free when ready.</h2>
+  <p>small tools that solve real problems. each one ships when it is done.</p>
+  <div class="tools-grid">
+    <div class="tool-card">
+      <div class="tool-header">
+        <span class="tool-num">01</span>
+        <span class="tool-badge">COMING SOON</span>
+      </div>
+      <div class="tool-name">crypto pay link</div>
+      <p class="tool-desc">generate a payment request link for any chain. no wallet connect.</p>
+    </div>
+    <div class="tool-card">
+      <div class="tool-header">
+        <span class="tool-num">02</span>
+        <span class="tool-badge">COMING SOON</span>
+      </div>
+      <div class="tool-name">tx receipt</div>
+      <p class="tool-desc">turn any transaction hash into a clean PDF receipt.</p>
     </div>
   </div>
 </div>
