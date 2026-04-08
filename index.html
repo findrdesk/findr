@@ -119,7 +119,7 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;justify
 }
 </style>
 </head>
-<body data-theme="dark">
+<body data-theme="light">
 <nav>
   <div class="nav-logo">findr</div>
   <div class="nav-right">
@@ -134,7 +134,7 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:flex;justify
       <button class="lang-btn" onclick="setLang('lv')">LV</button>
       <button class="lang-btn" onclick="setLang('ru')">RU</button>
     </div>
-    <button class="theme-btn" id="themeBtn">LIGHT</button>
+    <button class="theme-btn" id="themeBtn">DARK</button>
   </div>
 </nav>
 <main>
@@ -311,7 +311,7 @@ function setLang(lang){
 document.getElementById('themeBtn').addEventListener('click',()=>{
   const dark=document.body.dataset.theme==='dark';
   document.body.dataset.theme=dark?'light':'dark';
-  document.getElementById('themeBtn').textContent=dark?'DARK':'LIGHT';
+  document.getElementById('themeBtn').textContent=dark?'LIGHT':'DARK';
   drawFlow();
 });
 
